@@ -1,6 +1,109 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+<title>Pokken Matchup Recorder</title>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="styles/bootstrap.min.css">
+<link rel="stylesheet" href="styles/bootstrap-theme.min.css">
+
+<!-- CSS -->
+<link rel="stylesheet" href="styles/style.css">
+</head>
+
 <body>
-	<h1>TEST</h1>
+
+<div id="Toolbar">
+	<ul>
+		<li><h7>Pokken Matchup Recorder</h7></li>
+		<li><button onclick="ClearButtonClick(this)">Clear</button></li>
+		<li><button id="ClearAllButton" onclick="ClearAllMatchups()">Clear All</button></li>
+		<li><input id="FileInput" type="file" style="visibility:hidden" /><button onclick="$('#FileInput').click();">Load</button></li>
+		<li><button onclick="ExportCharacterDict()">Save</button></li>
+		<li><button onclick="clickHelpNav()">Help</button></li>
+		<li><button onclick="clickShareNav()">Share</button></li>
+	</ul>
+</div>
+
+
+<div id="HelpOverlay" class="overlay">
+	<a href="javascript:void(0)" class="closeBtn" onclick="closeHelpNav()">&times;</a>
+
+	<div class="overlay-content">
+		<p>HELP TEXT GOES HERE</p>
+	</div>
+</div>
+
+<div id="ShareOverlay" class="overlay">
+	<a href="javascript:void(0)" class="closeBtn" onclick="closeShareNav()">&times;</a>
+	<div class="container" id="ShareCharContainer">
+		<div class="row">
+
+		</div>
+		<div class="row">
+
+		</div>
+		<canvas id="ShareCanvas"></canvas>
+	</div>
+</div>
+
+<div id="PrimaryContainer" class="container-fluid">
+
+	<div id="CharContainer" class="container">
+		<div class="row seven-cols"> <!-- Row one of character select -->
+			<div class="col-md-1 col-xs-1"><!-- Empty Div --></div>
+			<div id="CharDiv0" class="col-md-1 col-xs-1 CharDiv"></div>
+			<div id="CharDiv1" class="col-md-1 col-xs-1 CharDiv"></div>
+			<div id="CharDiv2" class="col-md-1 col-xs-1 CharDiv"></div>
+			<div id="CharDiv3" class="col-md-1 col-xs-1 CharDiv"></div>
+			<div id="CharDiv4" class="col-md-1 col-xs-1 CharDiv"></div>
+		</div>
+		<div class="row seven-cols"> <!-- Row two of character select -->
+			<div class="col-md-1 col-xs-1"><!-- Empty Div --></div>
+			<div id="CharDiv5" class="col-md-1 col-xs-1 CharDiv"></div>
+			<div id="CharDiv6" class="col-md-1 col-xs-1 CharDiv"></div>
+			<div class="col-md-1 col-xs-1"><!-- Empty Div --></div>
+			<div id="CharDiv7"  class="col-md-1 col-xs-1 CharDiv"></div>
+			<div id="CharDiv8" class="col-md-1 col-xs-1 CharDiv"></div>
+		</div>
+		<div class="row seven-cols"> <!-- Row three of character select -->
+			<div id="CharDiv9" class="col-md-1 col-xs-1 CharDiv"></div>
+			<div id="CharDiv10" class="col-md-1 col-xs-1 CharDiv"></div>
+			<div id="CharDiv11" class="col-md-1 col-xs-1 CharDiv"></div>
+			<div id="CharDiv12" class="col-md-1 col-xs-1 CharDiv"></div>
+			<div id="CharDiv13" class="col-md-1 col-xs-1 CharDiv"></div>
+			<div id="CharDiv14" class="col-md-1 col-xs-1 CharDiv"></div>
+			<div id="CharDiv15" class="col-md-1 col-xs-1 CharDiv"></div>
+		</div>
+	</div>
+	<div id="SelectContainer" class="container"> <!-- Shows currently selected characters, and options for recording matchup -->
+		<div class="row">
+			<button id="MatchupToggleButton" class="btn btn-info" onclick="ClickMatchupToggle()" class="btn" type="button">Hide Matchups</button>
+			<div class="col-md-4 col-xs-4">
+				<div id="CharOneImage" class="CharacterPortraitDiv"> <!-- CharOne Image -->
+				<img id="CharOnePortrait" />
+				<button id="CharOneRemoveButton"></button>
+				</div>
+			</div>
+			<div class="col-md-2 col-xs-4 MiddleSelectDiv">
+				<input type="range" min="-3" max="3" value="0" onchange="TrackBarChange(this.value)" name="result" id="MatchupTrackBar" disabled="true"/>
+				<label id="TrackBarLabel"></label>
+				<span id="HelperText"></span>
+				<input class="SubmitButton btn btn-primary" type="button" value="Submit" onclick="RecordMatchup();return false" />
+				<button class="DeleteMatchupButton btn btn-danger" type="btn" onclick="DeleteSpecificMatchup()">! Delete Matchup</button>
+			</div>
+			<div class="col-md-4 col-xs-4">
+				<div id="CharTwoImage" class="CharacterPortraitDiv"> <!-- CharTwo Image -->
+				<img id="CharTwoPortrait" />
+				<button id="CharTwoRemoveButton"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/scripts.js"></script>
 </body>
 </html>
