@@ -252,11 +252,8 @@ function LoadCharacterDict(evt) {
 	} else {
 		alert("The File APIs are not fully supported by your browser.");
 	};
-<<<<<<< HEAD
-=======
 	SelectInfo.ShareChar = null;
 	UpdateShareScreen();
->>>>>>> 330a7378a49cacddaa78e18640213817c52079ac
 };
 
 document.getElementById("FileInput").addEventListener("change", LoadCharacterDict, false);
