@@ -2,6 +2,10 @@
 
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="keywords" content="Pokken Tournament, Matchup">
+<meta name="description" content="Tool to record and share Pokken character matchups">
+<meta name="author" content="Aidan Tallon">
 <title>Pokken Matchup Recorder</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" href="styles/bootstrap.min.css">
@@ -78,14 +82,18 @@
 	</div>
 	<div id="SelectContainer" class="container"> <!-- Shows currently selected characters, and options for recording matchup -->
 		<div class="row">
-			<button id="MatchupToggleButton" class="btn btn-info" onclick="ClickMatchupToggle()" class="btn" type="button">Hide Matchups</button>
+			<div class="col-md-1 col-md-offset-10 col-xs-1 col-xs-offset-8">
+				<button id="MatchupToggleButton" class="btn btn-info" onclick="ClickMatchupToggle()" class="btn" type="button">Hide Matchups</button>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-4 col-xs-4">
 				<div id="CharOneImage" class="CharacterPortraitDiv"> <!-- CharOne Image -->
 				<img id="CharOnePortrait" />
 				<button id="CharOneRemoveButton"></button>
 				</div>
 			</div>
-			<div class="col-md-2 col-xs-4 MiddleSelectDiv">
+			<div class="col-md-2 col-xs-2 MiddleSelectDiv">
 				<input type="range" min="-3" max="3" value="0" onchange="TrackBarChange(this.value)" name="result" id="MatchupTrackBar" disabled="true"/>
 				<label id="TrackBarLabel"></label>
 				<span id="HelperText"></span>
